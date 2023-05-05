@@ -9,7 +9,10 @@ class WelcomeTest {
 	
 	@Test
 	void EX2() {
-		assertEquals(Welcome.welcome("   "), "Hello, my friend");
+		String expected = "Hello, my friend";
+		assertEquals(Welcome.welcome(""),expected);
+		assertEquals(Welcome.welcome(" "),expected);
+		assertEquals(Welcome.welcome("  "),expected);
 		
 	}
 
