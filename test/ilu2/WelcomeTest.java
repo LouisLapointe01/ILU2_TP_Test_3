@@ -8,12 +8,10 @@ class WelcomeTest {
 	
 	
 	@Test
-	void EX2() {
-		String expected = "Hello, my friend";
-		assertEquals(Welcome.welcome(""),expected);
-		assertEquals(Welcome.welcome(" "),expected);
-		assertEquals(Welcome.welcome("  "),expected);
-		
+	void EX3() {
+		assertEquals(Welcome.welcome("MICHEL"), "HELLO, MICHEL !");
+		assertEquals(Welcome.welcome("42"), "HELLO, 42 !");
+		assertEquals(Welcome.welcome("Michel"), "Hello, Michel");
 	}
 
 }
