@@ -31,7 +31,14 @@ class WelcomeTest {
 	}
 
 	@Test
-	void testEX4() {
+	void EX4() {
 		assertEquals(Welcome.welcome("michel,boby"), "Hello, Michel, Boby");
+	}
+	
+	@Test
+	void EX5() {
+		  String expected1 = "Hello, Michel, Boby, Jerry";
+	      assertEquals(Welcome.welcome("michel,boby,jerry"), expected1);
+
 	}
 }

@@ -3,28 +3,33 @@ package ilu2;
 public class Welcome {
 
     public static String welcome(String entree) {
-        if (entree.isBlank()) {
-            return "Hello, my friend"; //verif chaine vide
-        }
+    	  if (entree.isBlank()) {
+              return "Hello, my friend";
+          }
 
-        String[] noms = entree.split(","); // Sépare les noms en utilisant la virgule comme séparateur
+          String[] noms = entree.split(",");
 
-        if (noms.length == 2) {
-            return "Hello, " + capitaliserPremiereLettre(noms[0]) + ", " + capitaliserPremiereLettre(noms[1]);
-        }
+          StringBuilder texte = new StringBuilder("Hello");
 
-        StringBuilder texte = new StringBuilder("Hello, ");
+          for (String nom : noms) {
+              if (estEnMajuscules(nom)) {
+                  texte.append(", ");
+                  texte.append(nom.toUpperCase());
+              } else {
+                  texte.append(", ");
+                  texte.append(capitaliserPremiereLettre(nom));
+              }
+          }
 
-        texte.append(capitaliserPremiereLettre(entree));
+          if (noms.length == 1 && estEnMajuscules(entree)) {
+              StringBuilder textemaj = new StringBuilder("HELLO, ");
+              textemaj.append(entree);
+              textemaj.append(" !");
+              return textemaj.toString();
+          }
 
-        if (estEnMajuscules(entree)) {
-            StringBuilder textemaj = new StringBuilder("HELLO, ");
-            textemaj.append(entree);
-            textemaj.append(" !");
-            return textemaj.toString();
-        }
-        return texte.toString();
-
+          return texte.toString();
+      
     }
 
     public static String capitaliserPremiereLettre(String mot) {
