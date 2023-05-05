@@ -7,25 +7,37 @@ public class Welcome {
               return "Hello, my friend";
           }
 
-          String[] noms = entree.split(",");
-
+          String[] noms = entree.split(","); 
+          
+          if (noms.length == 1) {
+              if (estEnMajuscules(noms[0].trim())) {
+                  return "HELLO, " + noms[0].trim() + " !";
+              } else {
+                  return "Hello, " + capitaliserPremiereLettre(noms[0].trim());
+              }
+          }
+          
           StringBuilder texte = new StringBuilder("Hello");
-
+          StringBuilder texteMajuscule = new StringBuilder();
+          
           for (String nom : noms) {
-              if (estEnMajuscules(nom)) {
-                  texte.append(", ");
-                  texte.append(nom.toUpperCase());
+              if (estEnMajuscules(nom.trim())) {
+                  if (texteMajuscule.length() == 0) {
+                      texteMajuscule.append(", ");
+                  } else {
+                      texteMajuscule.append(", ");
+                  }
+                  texteMajuscule.append(nom.trim());
               } else {
                   texte.append(", ");
-                  texte.append(capitaliserPremiereLettre(nom));
+                  texte.append(capitaliserPremiereLettre(nom.trim()));
               }
           }
 
-          if (noms.length == 1 && estEnMajuscules(entree)) {
-              StringBuilder textemaj = new StringBuilder("HELLO, ");
-              textemaj.append(entree);
-              textemaj.append(" !");
-              return textemaj.toString();
+          if (texteMajuscule.length() > 0) {
+              texte.append(". AND HELLO");
+              texte.append(texteMajuscule.toString());
+              texte.append(" !");
           }
 
           return texte.toString();

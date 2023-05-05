@@ -8,7 +8,6 @@ class WelcomeTest {
 	
 	@Test
 	void EX1() {
-		System.out.println("Initialisation...");
 		String expected = "Hello, Bob";
 		Welcome.welcome("bob");
 		assertEquals(expected,Welcome.welcome("bob"));
@@ -26,8 +25,7 @@ class WelcomeTest {
 	}
 	@Test
 	void EX3() {
-		String expected = "HELLO, MICHEL !";
-		assertEquals(Welcome.welcome("MICHEL"),expected);
+		assertEquals(Welcome.welcome("MICHEL"),"HELLO, MICHEL !");
 	}
 
 	@Test
@@ -37,8 +35,13 @@ class WelcomeTest {
 	
 	@Test
 	void EX5() {
-		  String expected1 = "Hello, Michel, Boby, Jerry";
-	      assertEquals(Welcome.welcome("michel,boby,jerry"), expected1);
+	      assertEquals(Welcome.welcome("michel,boby,jerry"),"Hello, Michel, Boby, Jerry");
 
 	}
+	
+	@Test
+    void EX6() {
+        assertEquals(Welcome.welcome("Amy, BOB, Jerry"), "Hello, Amy, Jerry. AND HELLO, BOB !");
+  
+    }
 }
